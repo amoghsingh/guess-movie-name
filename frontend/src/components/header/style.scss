@@ -1,0 +1,25 @@
+header{
+  padding:20px;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      align-items: center;
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+        gap:20px;
+        a{
+        font-family: var(--font);
+        text-decoration: none;
+        color:#fff;
+
+          &:hover{
+            color:yellow;
+          }
+       }      
+
+      }
+}

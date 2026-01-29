@@ -1,0 +1,17 @@
+# Node
+backend/node_modules/
+npm-debug.log*
+
+# React
+frontend/node_modules/
+
+# Env files
+.env
+backend/.env
+frontend/.env
+
+# Build
+frontend/build/
+
+# OS
+.DS_Store

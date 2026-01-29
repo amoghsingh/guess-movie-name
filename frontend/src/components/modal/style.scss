@@ -1,0 +1,48 @@
+.timesup-wrapper{
+    position: fixed;
+    inset:0; // this is a shorthand or top,right,bottom,left for position property. Here we have assigned all proerties as 0. This makes the wrapper fill the entire viewport. You do  not have to specify width,height etc.
+    pointer-events: auto; //With auto, overlay can receive clicks, hover etc. but not underneath UI. If the value was none, any clicks would have triggered through the overlay. 
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    //animation: fadeInOut 2s ease-in-out forwards;
+    
+
+    .timesup{
+        position: absolute;
+        background-color: red;
+        color:#fff;
+        font-size: 28px;
+        z-index: 10;
+       animation: fadeInOut 2s ease-in-out forwards;
+        padding:20px;
+        width:300px;
+        height:100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  15% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+}

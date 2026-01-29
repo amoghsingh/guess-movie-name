@@ -1,0 +1,5 @@
+export const types = {
+    CHANGE_THEME:"CHANGE_THEME",
+    FETCH_QUIZ:"FETCH_QUIZ",
+    UPDATE_SCORE:"UPDATE_SCORE"
+}
