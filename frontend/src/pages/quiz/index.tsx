@@ -32,15 +32,23 @@ const Quiz = () => {
   const [msg, setMsg] = useState("");
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [isTimerExpired, setIsTimerExpired] = useState(false);
+  const [useFreeHint, setUseFreeHint] = useState(false);
 
-
-
+/**
+ * function : useEffect
+ * purpose: remove error message if any after 5 seconds from the UI.
+ **/
   useEffect(() => {
     setTimeout(() => {
       setMsg("");
     }, 5000);
   }, [msg]);
 
+
+  /**
+ * function : useEffect
+ * purpose: to reset the quiz question values on new question load.
+ **/
   useEffect(() => {
     setShowPoster(false);
     inputRefs.current = [];
@@ -48,31 +56,48 @@ const Quiz = () => {
     const movieName = questions[index]?.answer.split("") || [];
     setName(movieName.map((x) => (x === " " ? " " : "")));
     setIsCorrect(null);
+    setUseFreeHint(false);
     setRevealedHints([false, false, false]);
   }, [index, questions]);
 
+
+  /**
+ * function : revealHint
+ * purpose: Total 3 hidden hint. On click of each hint reveals its hint text. Also updates score with each disclosing of each hint.
+ **/
   const revealHint = (val: number) => {
     let arr = [...revealedHints];
     if (!arr[val]) {
       arr[val] = true;
-      // setUserScore((prev) => prev - 1);
-      dispatch(updateScore(score-1));
+      if(useFreeHint === false){
+        setUseFreeHint(true);
+      }
+      else{
+         dispatch(updateScore(score-1)); 
+      }
       setRevealedHints(arr);
     } else return;
   };
 
+  /**
+ * function : calcScore
+ * purpose: calculates score for each question depending on correct/wrong answer.
+ **/
   const calcSCore = (val: boolean) => {
     if (val) {
       setIsCorrect(true);
-      // setUserScore((prev) => prev + 5);
         dispatch(updateScore(score+5));
     } else {
       setIsCorrect(false);
-      //setUserScore((prev) => prev - 5);
       dispatch(updateScore(score-5));
     }
   };
 
+
+/**
+ * function : showAnswer
+ * purpose: shows answer in the form of poster image after clciking guess button or after the time is up.
+ **/
   const showAnswer = () => {
     console.log(
       "name : ",
@@ -99,12 +124,15 @@ const Quiz = () => {
       if (index !== questions.length - 1) {
         setIndex((prev) => prev + 1);
       } else {
-       // dispatch(updateScore(userScore));
         navigate("/result");
       }
     }, 4000);
   };
 
+  /**
+ * function : handleChange
+ * purpose: Adds a character to a given input field plus puts the focus on the next input field if present.
+ **/
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     indexVal: number,
@@ -125,6 +153,11 @@ const Quiz = () => {
     }
   };
 
+
+/**
+ * function : handleBackspace
+ * purpose: Removes the character in a given input field.
+ **/
   const handleBackspace = (
     e: React.KeyboardEvent<HTMLInputElement>,
     index: number,
@@ -149,6 +182,11 @@ const Quiz = () => {
     }
   };
 
+
+/**
+ * function : freezeQuestion
+ * purpose: locks the question and guess button once the timer expires and then moves to the next question after 2 seconds.
+ **/
   const freezeQuestion = (val: string) => {
     if (val === "timesup") {
       setIsTimerExpired(true);
@@ -156,27 +194,12 @@ const Quiz = () => {
         setIsTimerExpired(false);
         if (index !== questions.length - 1) {
           setIndex((prev) => prev + 1);
-        } else {
-          //dispatch(updateScore(userScore));
+        } else {      
           navigate("/result");
         }
       }, 2000);
       return;
     }
-    // if (val === 2) {
-    //   setTimeout(() => {
-    //     setIsTimerExpired(false);
-    //     setIndex((prev) => prev + 1);
-    //   }, 3000);
-    //   return;
-    // }
-    // if (val === 3) {
-    //   setTimeout(() => {
-    //     setIsTimerExpired(false);
-    //     setIndex((prev) => prev + 1);
-    //   }, 3000);
-    //   return;
-    // }
   };
 
   return (

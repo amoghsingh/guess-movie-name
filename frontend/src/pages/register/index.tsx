@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ThemeSwitch from "../../components/themeSwitch";
 import { Api } from "../../services/Api";
 import TitleImage from "../../components/titleImage";
+import './style.css';
 
 const Register = () => {
 
@@ -36,7 +36,6 @@ const Register = () => {
     <TitleImage  width="700"/>
     <div className="wrapper">
     <h2>Register</h2>
-    <ThemeSwitch />
     <form onSubmit={handleSubmit}>
         <div className="form-group">
             <label htmlFor="">Username</label>
@@ -47,7 +46,7 @@ const Register = () => {
             <div><input type="password" name="password" value={password} onChange={handleChange}  /></div>
         </div>
         <input type="submit" value="Register" className="submit-btn"/>
-        {msg? <div>{msg}</div>:null}
+        {msg? <div className="regMsg">{msg}</div>:null}
     </form>
     </div>
     </>

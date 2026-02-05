@@ -3,7 +3,7 @@ import titleImg from '../images/title.png';
 
 
 const TitleImage = ({width}:{width:string}) => {
-    return (<><img src={titleImg} alt="title-image" style={{margin:"0 auto", width:`${width}px` }}/></>
+    return (<><img src={titleImg} alt="title-image" className="title-image" style={{margin:"0 auto", width:`${width}px` }}/></>
   )
 }
 

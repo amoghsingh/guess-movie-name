@@ -1,8 +1,6 @@
-.wrapper{
-    background-color: rgb(250, 240, 188);
-}
 
-.wrapper-dark{
-    background-color: rgb(60, 60, 60);
-    color:white;
+
+.regMsg{
+    font-size: 12px;
+    margin-top:10px;
 }

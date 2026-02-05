@@ -31,7 +31,7 @@ const Login = () => {
                 }
 
                 if(error.status === 404){
-                    setMsg("User not found! Either enter correct credentials or sign up.");
+                    setMsg("User not found! Either enter correct credentials or register.");
                 }
 
 

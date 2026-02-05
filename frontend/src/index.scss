@@ -2,6 +2,7 @@
   --bg-color:rgb(250, 240, 188);
   --text-color:black;
   --font:"Lexend Mega", sans-serif;
+  --bg: linear-gradient(to bottom, #ea99fb, #d295fe, #b792ff, #988fff, #728cff, #5d8bff, #418aff, #0089ff, #0089ff, #0089ff, #0089ff, #0089ff);
 }
 
 body, html {
@@ -20,6 +21,7 @@ body, html {
 body.dark{
   --bg-color:rgb(60,60,60);
   --text-color:white;
+  --bg: linear-gradient(to bottom, #7c7c7d, #70707f, #626580, #535a82, #424f83, #394a84, #2e4684, #214185, #214185, #214185, #214185, #214185);
 }
 
 code {
@@ -34,7 +36,8 @@ code {
 } */
 
 .app{
-   background-image: linear-gradient(to bottom, #ea99fb, #d295fe, #b792ff, #988fff, #728cff, #5d8bff, #418aff, #0089ff, #0089ff, #0089ff, #0089ff, #0089ff);
+  
+  background-image: var(--bg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -42,8 +45,10 @@ code {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-
+  transition: background-image 1s ease;
+  
 }
+
 
 .wrapper{
     background-color:#fff ;
@@ -121,5 +126,44 @@ form{
 
     &:hover{
       color:yellow;
+    }
+}
+
+
+
+@media screen and (min-width:400px) and (max-width:435px) and (orientation : portrait) {
+    .title-image{
+      width:300px !important;
+      margin-top:20% !important;
+    }
+
+    .wrapper{
+      width:300px;
+    }
+}
+
+
+@media screen and (min-width:860px) and (max-width:900px) and (orientation : landscape) {
+    header{
+      nav{
+          a{
+             font-size: 12px;
+          }
+
+          input{
+                font-size: 12px !important;
+              }
+            
+      }
+    }
+
+   
+
+    .title-image{
+      width:300px !important;
+    }
+
+    .wrapper{
+      width:300px;
     }
 }

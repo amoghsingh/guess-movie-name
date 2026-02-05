@@ -14,7 +14,7 @@ const ThemeSwitch = () => {
  }
 
   return (
-    <span>
+    <span className='theme-switch'>
       <input type="checkbox" name="theme-switch" checked={theme} onChange={handleThemeChange} /> {theme?"Dark Mode":"Light Mode"}
     </span>
   )

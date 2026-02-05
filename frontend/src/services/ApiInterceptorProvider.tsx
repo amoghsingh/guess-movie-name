@@ -46,6 +46,7 @@ export const ApiInterceptorProvider = ({ children }: { children: React.ReactNode
       }
     );
 
+    //Inside the useEffect, we are registering Axios interceptors: request and response. Each call to .use() adds a new interceptor to Axios and returns an ID(a number) reqInterceptor and resInterceptor. Axios will run all the registered interceptors for every request/response. Below function eject removes (unregisters) the interceptor that was previously added. Without eject, every token would add more interceptors. Request would get multiple Authorization headers , duplicated redirects, hard to debug behaviour.
     return () => {
       Api.interceptors.request.eject(reqInterceptor);
       Api.interceptors.response.eject(resInterceptor);

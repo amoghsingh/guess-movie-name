@@ -2,10 +2,10 @@ import React,{useEffect, useState} from 'react';
 import './style.scss';
 
 const Timer = ({freezeQuestion,showPoster, index}:{freezeQuestion:(val:string)=>void, showPoster:boolean, index:number}) => {
-const [seconds, setSeconds] = useState<number>(1);
+const [seconds, setSeconds] = useState<number>(60);
 
         useEffect(()=>{
-            setSeconds(1);
+            setSeconds(60);
         },[index]);
 
         useEffect(()=>{
